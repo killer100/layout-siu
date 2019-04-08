@@ -19,7 +19,7 @@
       [fixedInViewport]="mobileQuery.matches"
       fixedTopGap="56"
     >
-      <siu-sidenav></siu-sidenav>
+      <siu-sidenav [drawerOpen]="drawerOpen"></siu-sidenav>
     </mat-sidenav>
 
     <mat-sidenav-content [class.left-on-sidenav-open]="!drawerOpen&&!mobileQuery.matches">

@@ -1,6 +1,10 @@
-<ng-material-multilevel-menu
+<!-- <ng-material-multilevel-menu
   [configuration]='config'
   [items]='appitems'
   (selectedItem)="selectedItem($event)"
 >
-</ng-material-multilevel-menu>
+</ng-material-multilevel-menu> -->
+
+
+<p-slideMenu [model]="items" styleClass="siu-sidenav {{drawerOpen?'drawer-open':''}}" viewportHeight="500"
+  backLabel="Volver"></p-slideMenu>

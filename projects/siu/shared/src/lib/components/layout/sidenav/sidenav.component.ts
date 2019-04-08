@@ -1,81 +1,55 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { MenuItem } from 'primeng/api';
 
 @Component({
   selector: 'siu-sidenav',
   templateUrl: './sidenav.component.html',
-  styleUrls: [ './sidenav.component.scss' ]
+  styleUrls: ['./sidenav.component.scss']
 })
 export class SidenavComponent implements OnInit {
 
-  config = {
-    //paddingAtStart: true,
-    classname: 'siu-sidenav',
-    /*listBackgroundColor: '#5d4595',
-    fontColor: '#fff',
-    backgroundColor: '#333',
-    selectedListFontColor: 'red',*/
-  };
+  @Input() drawerOpen: boolean;
 
-  appitems = [
+  pages: any[];
+  items: MenuItem[] = [
     {
-      label: 'Item 1 (with Font awesome icon)',
-      icon: 'offline_pin',
-      items: [
-        {
-          label: 'Item 1.1',
-          link: '/item-1-1',
-          icon: 'offline_pin'
-        },
-        {
-          label: 'Item 1.2',
-          icon: 'offline_pin',
-          items: [
-            {
-              label: 'Item 1.2.1',
-              link: '/item-1-2-1',
-              icon: 'offline_pin'
-            },
-            {
-              label: 'Item 1.2.2',
-              icon: 'offline_pin',
-              items: [
-                {
-                  label: 'Item 1.2.2.1',
-                  link: 'item-1-2-2-1',
-                  icon: 'offline_pin'
-                }
-              ]
-            }
-          ]
-        }
+      label: 'File',
+      icon: 'pi pi-fw pi-plus', command: (event) => {
+        console.log(event)
+        //event.originalEvent: Browser event
+        //event.item: menuitem metadata
+      },
+      items: [{
+        label: 'New',
+        icon: 'pi pi-fw pi-plus',
+        items: [
+          { label: 'Project' },
+          { label: 'Other' },
+        ]
+      },
+      { label: 'Open' },
+      { label: 'Quit' }
       ]
     },
     {
-      label: 'Item 2',
-      icon: 'alarm',
+      label: 'Edit',
+      icon: 'pi pi-fw pi-pencil',
       items: [
         {
-          label: 'Item 2.1',
-          link: '/item-2-1',
-          icon: 'offline_pin'
+          label: 'Delete', icon: 'pi pi-fw pi-trash', command: (event) => {
+            console.log(event)
+            //event.originalEvent: Browser event
+            //event.item: menuitem metadata
+          }
         },
         {
-          label: 'Item 2.2',
-          link: '/item-2-2',
-          icon: 'favorite_border'
+          label: 'Refresh', icon: 'pi pi-fw pi-refresh', command: (event) => {
+            console.log(event)
+            //event.originalEvent: Browser event
+            //event.item: menuitem metadata
+          }
         }
       ]
-    },
-    {
-      label: 'Item 3',
-      link: '/item-3',
-      icon: 'offline_pin'
-    },
-    {
-      label: 'Item 4',
-      link: '/item-4',
-      icon: 'star_rate',
-      hidden: true
     }
   ];
 
@@ -87,5 +61,20 @@ export class SidenavComponent implements OnInit {
 
   selectedItem = (e) => {
     console.log(e);
+  }
+
+  get config() {
+    return {
+      //paddingAtStart: true,
+      classname: `siu-sidenav ${this.drawerOpen ? '' : 'drawer-close'}`,
+      /*listBackgroundColor: '#5d4595',
+      fontColor: '#fff',
+      backgroundColor: '#333',
+      selectedListFontColor: 'red',*/
+    }
+  };
+
+  handleClickItem = (item) => {
+    console.log(item)
   }
 }
