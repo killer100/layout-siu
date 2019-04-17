@@ -1,0 +1,65 @@
+<mat-dialog-content>
+  <div class="alert-content">
+    <div>
+      <div
+        class="icon-container"
+        *ngIf="data.config.confirm"
+      >
+        <mat-icon
+          class="icon_warning"
+          [inline]="true"
+        >error_outline</mat-icon>
+      </div>
+      <div
+        class="icon-container"
+        *ngIf="data.config.icon&&!data.confirm"
+      >
+        <mat-icon
+          *ngIf="data.config.icon=='success'"
+          class="icon_success"
+          [inline]="true"
+        >check_circle_outline</mat-icon>
+
+        <mat-icon
+          *ngIf="data.config.icon=='error'"
+          class="icon_error"
+          [inline]="true"
+        >cancel</mat-icon>
+
+        <mat-icon
+          *ngIf="data.config.icon=='warning'"
+          class="icon_warning"
+          [inline]="true"
+        >error_outline</mat-icon>
+
+        <mat-icon
+          *ngIf="data.config.icon=='info'"
+          class="icon_info"
+          [inline]="true"
+        >info</mat-icon>
+      </div>
+
+      <h4
+        class="mat-headline text-center text-title"
+        *ngIf="data.title"
+      >{{data.title}}</h4>
+
+      <h3
+        class="mat-title text-center text-msg"
+        *ngIf="data.msg"
+      >{{data.msg}}</h3>
+    </div>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions class="buttons-container">
+  <siu-base-button
+    *ngIf="data.config.confirm"
+    [label]="cancelConfirmText"
+    (on-click)="handleClose()"
+  ></siu-base-button>
+  <siu-base-button
+    color="primary"
+    [label]="data.config.confirm?okConfirmText:okAlertText"
+    (on-click)="handleClose(true)"
+  ></siu-base-button>
+</mat-dialog-actions>

@@ -1,0 +1,73 @@
+<div class="siu-paginator">
+  <div class="siu-paginator-outer-container">
+    <div class="siu-paginator-container">
+
+      <div class="mat-typography col-page-size">
+        Visualizar
+        <mat-form-field class="page-size-select">
+          <mat-select
+            [value]="pageSize"
+            (selectionChange)="handleChangePageSize($event)"
+          >
+            <mat-option
+              *ngFor="let val of pageSizeOptions"
+              [value]="val"
+            >
+              {{val}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        registros
+        &nbsp;&nbsp;
+        -&nbsp;&nbsp;
+        {{(page-1)*pageSize+1}} a {{(page-1)*pageSize + pageLength}} de {{total}} registros
+      </div>
+      <div class="col-paginator">
+        <button
+          mat-icon-button
+          [disabled]="page==1||disabled"
+          (click)="handleClickFirstPage()"
+        >
+          <mat-icon aria-label="first_page">first_page</mat-icon>
+        </button>
+
+        <button
+          mat-icon-button
+          [disabled]="page==1||disabled"
+          (click)="handleClickPreviousPage()"
+        >
+          <mat-icon aria-label="previous_page">keyboard_arrow_left</mat-icon>
+        </button>
+
+        <button
+          *ngFor="let item of pageItems"
+          class="button-circle page-number-buttons"
+          [ngClass]="{ active: item.active }"
+          mat-button
+          [disabled]="page==item.number||disabled"
+          (click)="handleClickPage(item.number)"
+        >
+          {{ item.text }}
+        </button>
+
+        <button
+          mat-icon-button
+          [disabled]="page === totalPages || disabled"
+          (click)="handleClickNextPage()"
+        >
+          <mat-icon aria-label="next_page">keyboard_arrow_right</mat-icon>
+        </button>
+
+        <button
+          mat-icon-button
+          [disabled]="page === totalPages || disabled"
+          (click)="handleClickLastPage()"
+        >
+          <mat-icon aria-label="
+          last_page">last_page</mat-icon>
+        </button>
+      </div>
+
+    </div>
+  </div>
+</div>

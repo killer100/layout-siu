@@ -1,0 +1,134 @@
+<ng-container [formGroup]="formGroupParent">
+  <mat-form-field
+    *ngIf="variant==VARIANT_TYPE.text"
+    [ngClass]="{'full-width':fullWidth }"
+  >
+    <input
+      matInput
+      [placeholder]="label"
+      [formControlName]="controlName"
+      [disableControl]="disabled"
+    >
+    <mat-error>
+      <ng-container *ngFor="let validation of msgValidations">
+        <div *ngIf="formGroupParent.get(controlName).hasError(validation.name)">
+          {{validation.message}}
+        </div>
+      </ng-container>
+    </mat-error>
+  </mat-form-field>
+
+
+  <mat-form-field
+    *ngIf="variant==VARIANT_TYPE.multiline"
+    [ngClass]="{'full-width':fullWidth }"
+  >
+    <textarea
+      matInput
+      [placeholder]="label"
+      [formControlName]="controlName"
+      [rows]="rows"
+      [disableControl]="disabled"
+    ></textarea>
+    <mat-error>
+      <ng-container *ngFor="let validation of msgValidations">
+        <div *ngIf="formGroupParent.get(controlName).hasError(validation.name)">
+          {{validation.message}}
+        </div>
+      </ng-container>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field
+    *ngIf="variant==VARIANT_TYPE.select"
+    [ngClass]="{'full-width':fullWidth }"
+  >
+    <mat-label>{{label}}</mat-label>
+    <ng-select
+      ngSelectMat
+      [items]="options"
+      [selectOnTab]="true"
+      [bindValue]="bindValue"
+      [bindLabel]="bindLabel"
+      [formControlName]="controlName"
+      [searchable]="true"
+      (change)="handleChange($event)"
+      [disableControl]="disabled"
+    ></ng-select>
+    <mat-error>
+      <ng-container *ngFor="let validation of msgValidations">
+        <div *ngIf="formGroupParent.get(controlName).hasError(validation.name)">
+          {{validation.message}}
+        </div>
+      </ng-container>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field
+    *ngIf="variant==VARIANT_TYPE.multiselect"
+    [ngClass]="{'full-width':fullWidth }"
+  >
+    <mat-label>{{label}}</mat-label>
+    <ng-select
+      ngSelectMat
+      [items]="options"
+      [selectOnTab]="true"
+      [bindValue]="bindValue"
+      [bindLabel]="bindLabel"
+      [multiple]="true"
+      [formControlName]="controlName"
+      [closeOnSelect]="false"
+      [searchable]="true"
+      (change)="handleChange($event)"
+      [disableControl]="disabled"
+    >
+      <ng-template
+        ng-option-tmp
+        let-item="item"
+        let-item$="item$"
+        let-index="index"
+      >
+        <input
+          type="checkbox"
+          [checked]="item$.selected"
+        />{{item[bindLabel]}}
+      </ng-template>
+    </ng-select>
+    <mat-error>
+      <ng-container *ngFor="let validation of msgValidations">
+        <div *ngIf="formGroupParent.get(controlName).hasError(validation.name)">
+          {{validation.message}}
+        </div>
+      </ng-container>
+    </mat-error>
+  </mat-form-field>
+  <!--
+  <p-dropdown
+    *ngIf="variant==VARIANT_TYPE.select"
+    [styleClass]="{'full-width':fullWidth }"
+    matNativeControl
+    [formControlName]="controlName"
+    [options]="options"
+    appendTo="body"
+    [resetFilterOnHide]="true"
+    [style]="{'width':'100%'}"
+    placeholder="{{label}}"
+    [showClear]="true"
+    [panelStyle]="{maxWidth:'250px'}"
+    [filter]="true"
+  >
+  </p-dropdown> -->
+
+
+  <!--
+    <mat-select [formControlName]="controlName">
+      <mat-option [value]="null">
+        --seleccione--
+      </mat-option>
+      <mat-option
+        *ngFor="let item of options"
+        [value]="bindObject?item:item[bindValue]"
+      >{{item[bindLabel]}}</mat-option>
+    </mat-select> -->
+
+</ng-container>

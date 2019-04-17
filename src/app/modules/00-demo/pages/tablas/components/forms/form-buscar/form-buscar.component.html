@@ -1,0 +1,86 @@
+<ng-container *ngIf="state$ | async as state">
+
+  <div class="source-container mat-caption">
+    <code>
+      estado: {{state.formBuscar | json}}
+    </code>
+    <br>
+    <code>
+      form: {{form.value | json}}
+    </code>
+  </div>
+
+  <form
+    (ngSubmit)="handleSubmit()"
+    [formGroup]="form"
+    autocomplete="off"
+    novalidate
+  >
+    <mat-card class="mat-elevation-z4">
+
+      <div class="grid">
+
+        <siu-form-field
+          label="Nombre"
+          [formGroupParent]="form"
+          controlName="name"
+          [msgValidations]="msgValidations.name"
+        ></siu-form-field>
+
+        <siu-form-field
+          label="Apellidos"
+          [formGroupParent]="form"
+          controlName="surname"
+          [msgValidations]="msgValidations.surname"
+        ></siu-form-field>
+
+        <siu-form-field
+          label="Email"
+          [formGroupParent]="form"
+          controlName="email"
+          [msgValidations]="msgValidations.email"
+        ></siu-form-field>
+
+        <siu-form-field
+          label="Edad"
+          variant="select"
+          [formGroupParent]="form"
+          controlName="age"
+          [options]="[{label: 25, value: 25}, {label: 26, value: 26}, {label: 27, value: 27}]"
+          [msgValidations]="msgValidations.age"
+        ></siu-form-field>
+
+        <siu-form-field
+          label="Edad"
+          variant="multiselect"
+          [formGroupParent]="form"
+          controlName="age"
+          [options]="[{label: 'veinticinco', value: 25}, {label: 'veintiseis', value: 26}, {label: 'veintisiete', value: 27}]"
+          [msgValidations]="msgValidations.age"
+        ></siu-form-field>
+      </div>
+
+      <div class="form-buttons-container">
+        <button
+          type="submit"
+          mat-raised-button
+          color="primary"
+          [disabled]="state.gridPersonas.isLoading"
+        >Buscar</button>
+
+        <button
+          mat-raised-button
+          type="button"
+          (click)="handleReset()"
+        >Reset</button>
+
+        <button
+          mat-raised-button
+          type="button"
+          (click)="handleResetToLastValue()"
+        >Reset to last value</button>
+      </div>
+
+    </mat-card>
+  </form>
+</ng-container>

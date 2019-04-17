@@ -1,0 +1,27 @@
+<button
+  mat-raised-button
+  class="siu-base-button"
+  *ngIf="variant==variants.NORMAL"
+  [type]="type"
+  [color]="color"
+  [matTooltip]="tooltip"
+  [matTooltipPosition]="tooltipPosition"
+  [disabled]="disabled"
+  (click)="handleClick()"
+>
+  <mat-icon *ngIf="icon">{{icon}}</mat-icon><span *ngIf="icon">&nbsp;</span>{{label}}
+</button>
+
+<button
+  mat-icon-button
+  color="primary"
+  *ngIf="variant==variants.ICON"
+  [type]="type"
+  [color]="color"
+  [matTooltip]="tooltip"
+  [matTooltipPosition]="tooltipPosition"
+  [disabled]="disabled"
+  (click)="handleClick()"
+>
+  <mat-icon *ngIf="icon">{{icon}}</mat-icon>
+</button>

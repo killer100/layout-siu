@@ -1,0 +1,197 @@
+<h2 class="mat-h2">Botones</h2>
+
+<mat-card class="mat-elevation-z4">
+  <div class="grid-225">
+
+    <div>
+
+      <siu-base-button label="botón normal"></siu-base-button>
+      <div class="source-container mat-caption">
+        <code>{{code.boton0}}</code>
+      </div>
+    </div>
+
+    <div>
+
+      <siu-base-button
+        label="botón primary"
+        color="primary"
+      ></siu-base-button>
+
+      <div class="source-container mat-caption">
+        <code>{{code.boton1}}</code>
+      </div>
+    </div>
+
+    <div>
+
+      <siu-base-button
+        label="botón con icono"
+        color="accent"
+        icon="alarm"
+      ></siu-base-button>
+      <div class="source-container mat-caption">
+        <code>{{code.boton2}}</code>
+      </div>
+    </div>
+
+    <div>
+
+      <siu-base-button
+        label="botón con tooltip"
+        color="primary"
+        icon="alarm"
+        tooltip="botón con tooltip"
+      ></siu-base-button>
+      <div class="source-container mat-caption">
+        <code>{{code.boton3}}</code>
+      </div>
+
+    </div>
+
+    <div>
+      <div> Icon Buttons</div>
+      <siu-base-button
+        variant="icon"
+        color="primary"
+        icon="search"
+        tooltip="Consultar"
+      ></siu-base-button>
+
+      <siu-base-button
+        variant="icon"
+        color="primary"
+        icon="edit"
+        tooltip="Editar"
+      ></siu-base-button>
+
+      <siu-base-button
+        variant="icon"
+        color="primary"
+        icon="delete"
+        tooltip="Borrar"
+      ></siu-base-button>
+      <siu-base-button
+        variant="icon"
+        color="primary"
+        icon="add_circle"
+        tooltip="Nuevo"
+      ></siu-base-button>
+      <div class="source-container mat-caption">
+        <code>{{code.boton4}}</code>
+      </div>
+
+    </div>
+
+    <div>
+      <div> Botón predefinido BUSCAR</div>
+
+      <siu-button-buscar></siu-button-buscar>
+
+      <div class="source-container mat-caption">
+        <code>{{code.boton5}}</code>
+      </div>
+    </div>
+
+    <div>
+      <div> Botón predefinido Nuevo</div>
+
+      <siu-button-nuevo></siu-button-nuevo>
+
+      <div class="source-container mat-caption">
+        <code>{{code.boton6}}</code>
+      </div>
+    </div>
+
+
+
+    <div>
+      <div> Botón predefinido Limpiar</div>
+
+      <siu-button-limpiar></siu-button-limpiar>
+
+      <div class="source-container mat-caption">
+        <code>{{code.boton7}}</code>
+      </div>
+    </div>
+
+
+    <div>
+      <div> Botón predefinido Cancelar</div>
+
+      <siu-button-cancelar></siu-button-cancelar>
+
+      <div class="source-container mat-caption">
+        <code>{{code.boton8}}</code>
+      </div>
+    </div>
+
+    <div>
+      <div> Botón predefinido Cancelar con variante retornar</div>
+
+      <siu-button-cancelar></siu-button-cancelar>
+
+      <div class="source-container mat-caption">
+        <code>{{code.boton9}}</code>
+      </div>
+    </div>
+
+    <div>
+
+      <siu-base-button
+        label="botón con toast success"
+        (on-click)="handleClickToastSuccess()"
+      ></siu-base-button><br><br>
+
+      <siu-base-button
+        label="botón con toast error"
+        (on-click)="handleClickToastError()"
+      ></siu-base-button><br><br>
+
+      <siu-base-button
+        label="botón con toast warning"
+        (on-click)="handleClickToastWarning()"
+      ></siu-base-button><br><br>
+
+      <siu-base-button
+        label="botón con toast info"
+        (on-click)="handleClickToastInfo()"
+      ></siu-base-button>
+    </div>
+
+
+    <div>
+
+      <siu-base-button
+        label="botón con alert success"
+        (on-click)="handleClickOpenAlertSuccess()"
+      ></siu-base-button><br><br>
+
+      <siu-base-button
+        label="botón con alert error"
+        (on-click)="handleClickOpenAlertError()"
+      ></siu-base-button><br><br>
+
+      <siu-base-button
+        label="botón con warning"
+        (on-click)="handleClickOpenAlertWarning()"
+      ></siu-base-button><br><br>
+
+      <siu-base-button
+        label="botón con info"
+        (on-click)="handleClickOpenAlertInfo()"
+      ></siu-base-button><br><br>
+
+
+    </div>
+
+
+    <div>
+      <siu-base-button
+        label="botón con confirm"
+        (on-click)="handleClickOpenConfirm()"
+      ></siu-base-button><br><br>
+    </div>
+
+  </div>
+</mat-card>

@@ -1,0 +1,17 @@
+
+<ng-container *ngIf="state$ | async as state">
+
+
+  <div style="text-align: right;margin-bottom: 25px;">
+    <siu-button-nuevo (on-click)="handleClickNuevo()"></siu-button-nuevo>
+  </div>
+
+  <siu-data-grid
+    [loading]="state.gridPersonas.isLoading"
+    [source]="state.gridPersonas.source"
+    [definition]="state.gridPersonas.definition"
+    (on-load-data)="handleLoadData($event)"
+    (on-click-button)="handleClickButton($event)"
+  >
+  </siu-data-grid>
+</ng-container>

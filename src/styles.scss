@@ -1,0 +1,116 @@
+/* You can add global styles to this file, and also import other style files */
+/*@import "~@angular/material/prebuilt-themes/indigo-pink.css";*/
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  background-color: #efefef;
+}
+
+@import '~@angular/material/theming';
+@import './assets/scss/ng-select-theme';
+@import './assets/scss/toast-theme';
+@import './assets/scss/helpers';
+
+@include mat-core();
+$candy-app-primary: mat-palette($mat-deep-purple, 500);
+$candy-app-accent: mat-palette($mat-deep-orange, 600);
+
+// The warn palette is optional (defaults to red).
+//$candy-app-warn: mat-palette($mat-indigo, 600);
+
+// Create the theme object (a Sass map containing all of the palettes).
+$candy-app-theme: mat-light-theme($candy-app-primary, $candy-app-accent);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+
+@include angular-material-theme($candy-app-theme);
+
+@include ng-select-theme($candy-app-theme);
+
+.source-container {
+  background: #efefef;
+  margin: 15px 0px;
+  padding: 15px;
+  border: solid 1px #ccc;
+}
+
+.form-buttons-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px 0px;
+
+  button {
+    margin: 0px 5px;
+  }
+}
+
+
+/*GRILLA RESPONSIVE*/
+.espacio {
+  margin-top: 3px;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+/* drilla responsive objetos */
+.grid {
+  display: grid;
+  row-gap: 4px;
+  column-gap: 15px;
+  grid-template-columns: repeat(auto-fill, minmax(325px, 1fr));
+  align-items: stretch;
+}
+
+.grid-225 {
+  display: grid;
+  row-gap: 6px;
+  column-gap: 15px;
+  grid-template-columns: repeat(auto-fill, minmax(225px, 1fr));
+  align-items: stretch;
+}
+
+.grid-200 {
+  display: grid;
+  row-gap: 6px;
+  column-gap: 15px;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  align-items: stretch;
+}
+
+.grid-250 {
+  display: grid;
+  row-gap: 4px;
+  column-gap: 15px;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  align-items: stretch;
+}
+
+.grid-250m {
+  display: grid;
+  row-gap: 1px;
+  grid-gap: 1px;
+  column-gap: 10px;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  align-items: stretch;
+}
+
+.grid-280 {
+  display: grid;
+  row-gap: 4px;
+  column-gap: 15px;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  align-items: stretch;
+}
+
+.grid-350 {
+  display: grid;
+  row-gap: 4px;
+  column-gap: 15px;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  align-items: stretch;
+}

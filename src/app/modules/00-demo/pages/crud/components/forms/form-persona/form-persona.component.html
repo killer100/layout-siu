@@ -1,0 +1,71 @@
+<ng-container *ngIf="state$ | async as state">
+  <div mat-dialog-title>Registrar persona</div>
+  <mat-progress-bar mode="indeterminate" *ngIf="state.isLoading"></mat-progress-bar>
+  <form
+    [formGroup]="form"
+    (ngSubmit)="handleSubmit()"
+    autocomplete="off"
+    novalidate
+  >
+    <mat-dialog-content>
+
+      <div class="grid">
+        <siu-form-field
+          label="Nombre"
+          [disabled]="state.isLoading"
+          [formGroupParent]="form"
+          controlName="name"
+          [msgValidations]="msgValidations.name"
+        ></siu-form-field>
+
+        <siu-form-field
+          label="Apellidos"
+          [disabled]="state.isLoading"
+          variant="multiline"
+          [formGroupParent]="form"
+          controlName="surname"
+          [msgValidations]="msgValidations.surname"
+        ></siu-form-field>
+
+        <siu-form-field
+          label="Email"
+          [disabled]="state.isLoading"
+          [formGroupParent]="form"
+          controlName="email"
+          [msgValidations]="msgValidations.email"
+        ></siu-form-field>
+
+        <siu-form-field
+          label="Telefono"
+          [disabled]="state.isLoading"
+          [formGroupParent]="form"
+          controlName="phone"
+          [msgValidations]="msgValidations.phone"
+        ></siu-form-field>
+
+        <siu-form-field
+          [disabled]="state.isLoading"
+          label="Dirección"
+          [formGroupParent]="form"
+          controlName="address"
+          [msgValidations]="msgValidations.address"
+        ></siu-form-field>
+
+      </div>
+
+
+    </mat-dialog-content>
+    <mat-dialog-actions>
+      <div>
+        <siu-button-guardar
+          type="submit"
+          [disabled]="state.isLoading"
+        ></siu-button-guardar>
+        <siu-button-cancelar
+          (on-click)="handleClose()"
+          [disabled]="state.isLoading"
+        ></siu-button-cancelar>
+      </div>
+    </mat-dialog-actions>
+  </form>
+</ng-container>

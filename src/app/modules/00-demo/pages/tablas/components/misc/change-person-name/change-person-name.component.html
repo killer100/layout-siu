@@ -1,0 +1,13 @@
+<form (ngSubmit)="handleSubmit()">
+  <input
+    type="text"
+    [(ngModel)]="name"
+    name="name"
+  >
+  <br>
+  <button type="submit">cambiar nombre</button>
+  <button
+    type="button"
+    (click)="handleClickResetName()"
+  >X</button>
+</form>

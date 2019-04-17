@@ -1,0 +1,70 @@
+<div [formGroup]="formGroupParent">
+  <mat-form-field
+    *ngIf="variant==VARIANT_TYPE.text"
+    [ngClass]="{'full-width':fullWidth }"
+  >
+    <input
+      matInput
+      [placeholder]="label"
+      [formControlName]="controlName"
+    >
+    <mat-error>
+      <ng-container *ngFor="let validation of msgValidations">
+        <div *ngIf="formGroupParent.get(controlName).hasError(validation.name)">
+          {{validation.message}}
+        </div>
+      </ng-container>
+    </mat-error>
+  </mat-form-field>
+
+
+  <mat-form-field
+    *ngIf="variant==VARIANT_TYPE.multiline"
+    [ngClass]="{'full-width':fullWidth }"
+  >
+    <textarea
+      matInput
+      [placeholder]="label"
+      [formControlName]="controlName"
+      [rows]="rows"
+    ></textarea>
+    <mat-error>
+      <ng-container *ngFor="let validation of msgValidations">
+        <div *ngIf="formGroupParent.get(controlName).hasError(validation.name)">
+          {{validation.message}}
+        </div>
+      </ng-container>
+    </mat-error>
+  </mat-form-field>
+
+
+
+    <p-dropdown
+      *ngIf="variant==VARIANT_TYPE.select"
+      [styleClass]="{'full-width':fullWidth }"
+      matNativeControl
+      [formControlName]="controlName"
+      [options]="options"
+      appendTo="body"
+      [resetFilterOnHide]="true"
+      [style]="{'width':'100%'}"
+      placeholder="{{label}}"
+      [showClear]="true"
+      [panelStyle]="{maxWidth:'250px'}"
+      [filter]="true"
+    >
+    </p-dropdown>
+
+
+  <!--
+    <mat-select [formControlName]="controlName">
+      <mat-option [value]="null">
+        --seleccione--
+      </mat-option>
+      <mat-option
+        *ngFor="let item of options"
+        [value]="bindObject?item:item[bindValue]"
+      >{{item[bindLabel]}}</mat-option>
+    </mat-select> -->
+
+</div>

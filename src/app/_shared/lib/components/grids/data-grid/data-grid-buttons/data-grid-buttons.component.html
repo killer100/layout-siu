@@ -1,0 +1,11 @@
+<ng-container *ngFor="let btn of buttons">
+  <siu-base-button
+    variant="icon"
+    [color]="btn.color"
+    [tooltip]="btn.tooltip"
+    [icon]="btn.icon"
+    (on-click)="handleClickButton(btn)"
+    [disabled]="(btn.disabled?btn.disabled(item, rowIndex):false)||disabled"
+    *ngIf="(btn.hidden?!btn.hidden(item, rowIndex):true)"
+  ></siu-base-button>
+</ng-container>

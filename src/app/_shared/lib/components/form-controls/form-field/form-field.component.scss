@@ -1,0 +1,23 @@
+.full-width {
+  width: 100%;
+}
+
+:host {
+  ::ng-deep {
+
+    .ui-dropdown {
+      border-width: 0;
+      background: transparent no-repeat;
+      background-image: linear-gradient(to bottom, #607D8B, #607D8B), linear-gradient(to bottom, #bdbdbd, #bdbdbd);
+      background-size: 0 2px, 100% 1px;
+      background-position: 50% 100%, 50% 100%;
+      transition: background-size 0.3s cubic-bezier(0.64, 0.09, 0.08, 1);
+      padding-bottom: 2px;
+      box-sizing: border-box;
+      -moz-border-radius: 0;
+      -webkit-border-radius: 0;
+      border-radius: 0;
+    }
+
+  }
+}

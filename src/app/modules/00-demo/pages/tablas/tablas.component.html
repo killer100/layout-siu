@@ -1,0 +1,47 @@
+<ng-container *ngIf="state$ | async as state">
+
+  <h2 class="mat-h2">Tabla simple</h2>
+
+  <app-form-buscar></app-form-buscar>
+  <br>
+
+  <siu-data-grid
+    [loading]="state.gridPersonas.isLoading"
+    [source]="state.gridPersonas.source"
+    [definition]="state.gridPersonas.definition"
+    (on-load-data)="handleLoadData($event)"
+    (on-click-button)="handleClickButton($event)"
+  >
+    <ng-template
+      siuTemplate="columna-personalizada"
+      let-person
+      let-rowIndex="rowIndex"
+    >
+      <input
+        type="text"
+        value="columna personalizada 1"
+      >
+    </ng-template>
+
+    <ng-template
+      siuTemplate="columna-personalizada-2"
+      let-person
+      let-rowIndex="rowIndex"
+    >
+      columna personalizada 2
+    </ng-template>
+
+  </siu-data-grid>
+
+  <br> <br>
+  <h2 class="mat-h2">Tabla editable</h2>
+
+  <siu-data-grid-editable
+    [loading]="state.gridEditablePersonas.isLoading"
+    [source]="state.gridEditablePersonas.source"
+    [definition]="state.gridEditablePersonas.definition"
+    (on-load-data)="handleLoadDataPersonsEditable($event)"
+    (on-save)="handleSaveItemEditable($event)"
+  ></siu-data-grid-editable>
+
+</ng-container>

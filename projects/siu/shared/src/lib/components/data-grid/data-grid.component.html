@@ -1,0 +1,70 @@
+<div class="mat-elevation-z8 data-grid-container">
+  <mat-table
+    [dataSource]="source.items"
+    matSort
+    [matSortDisableClear]="true"
+    [matSortActive]="source.orderBy"
+    [matSortDirection]="source.orderDir"
+    (matSortChange)="handleSort($event)"
+  >
+    <ng-container
+      [matColumnDef]="item['field']"
+      *ngFor="let item of definition.columns"
+    >
+      <mat-header-cell
+        *matHeaderCellDef
+        mat-sort-header
+        [disabled]="item.custom===true||loading"
+      > {{item.label}}</mat-header-cell>
+
+      <mat-cell
+        *matCellDef="let element; let rowIndex = index;"
+        [attr.data-label]="item.label"
+      >
+        <ng-container *ngIf="item.custom;else normalColumn">
+          <ng-container
+            *ngTemplateOutlet="customTemplates[item.field]; context {$implicit: element, rowIndex: rowIndex}"
+          >
+          </ng-container>
+        </ng-container>
+
+        <ng-template #normalColumn>
+          {{element[item['field']]}}
+        </ng-template>
+      </mat-cell>
+
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+
+  </mat-table>
+
+  <div
+    class="empty-rows mat-typography"
+    *ngIf="source.total==0&&!loading"
+  >
+    {{emptyRowsMsg}}
+  </div>
+
+  <siu-data-grid-skeleton *ngIf="loading&&source.total==0"></siu-data-grid-skeleton>
+
+  <div class="progress-bar-container">
+    <mat-progress-bar
+      mode="indeterminate"
+      *ngIf="loading"
+    ></mat-progress-bar>
+  </div>
+
+  <siu-data-grid-paginator
+    *ngIf="source.total>0"
+    [disabled]="loading"
+    (on-change-page)="handleChangePage($event)"
+    (on-change-page-size)="handleChangePageSize($event)"
+    [total]="source.total"
+    [pageSize]="source.pageSize"
+    [page]="source.page"
+    [pageSizeOptions]="pageSizeOptions"
+    [pageLength]="source.items.length"
+  ></siu-data-grid-paginator>
+</div>

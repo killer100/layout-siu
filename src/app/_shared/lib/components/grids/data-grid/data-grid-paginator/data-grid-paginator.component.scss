@@ -1,0 +1,67 @@
+.siu-paginator {
+  display: block;
+}
+
+.siu-paginator-outer-container {
+  display: flex;
+}
+
+.siu-paginator-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  min-height: 56px;
+  padding: 0 8px;
+  flex-wrap: wrap-reverse;
+  width: 100%;
+}
+
+.button-circle {
+  padding: 0;
+  min-width: 0;
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  line-height: 40px;
+  border-radius: 50%;
+}
+
+.button-circle.active {
+  background: #e6e6e6;
+}
+
+.siu-paginator button:not([disabled]) {
+  color: #777 !important;
+}
+
+
+@media screen and (max-width: 480px) {
+  .siu-paginator-container {
+    justify-content: center;
+  }
+
+  .page-number-buttons {
+    display: none !important;
+  }
+
+  .col-page-size {
+    flex: none!important;
+    flex-direction: column;
+  }
+
+  .col-paginator {
+    flex-direction: column;
+  }
+}
+
+.col-page-size {
+  flex: 1;
+  padding: 0px 15px;
+}
+
+.col-paginator {}
+
+.page-size-select {
+  width: 50px;
+  text-align: center;
+}

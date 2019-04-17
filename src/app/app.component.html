@@ -1,0 +1,13 @@
+<ng-container *ngIf="state$ | async as state">
+  <siu-layout
+    [router]="router"
+    [appTitle]="state.ui.appTitle"
+    [drawerMini]="state.ui.drawerMini"
+    [drawerOpen]="state.ui.isMobile?state.ui.drawerMobileOpen:state.ui.drawerOpen"
+    [appMenu]="state.ui.appMenu"
+    [isMobile]="state.ui.isMobile"
+    (on-toogle-drawer)="handleToogleDrawer($event)"
+  >
+    <router-outlet></router-outlet>
+  </siu-layout>
+</ng-container>

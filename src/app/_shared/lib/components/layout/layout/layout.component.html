@@ -1,0 +1,38 @@
+<div
+  class="layout-container"
+  [class.layout-is-mobile]="isMobile"
+>
+  <siu-header
+    [title]="appTitle"
+    [isMobile]="isMobile"
+    (on-toogle-drawer)="handleToogleDrawer()"
+  ></siu-header>
+
+  <mat-sidenav-container
+    class="layout-sidenav-container"
+    [style.marginTop.px]="isMobile ? 50 : 50"
+  >
+    <mat-sidenav
+      class="layout-sidenav"
+      [class.mat-sidenav-closed]="!drawerOpen&&!isMobile"
+      [class.mat-sidenav-open]="drawerOpen&&!isMobile"
+      [opened]="drawerOpen"
+      [mode]="isMobile ? 'over' : 'side'"
+      [fixedInViewport]="isMobile"
+      (openedChange)="handleDrawerStateChange($event)"
+      fixedTopGap="50"
+    >
+      <siu-sidenav
+        (on-select-menu-item)="handleClickItemMenu($event)"
+        [drawerOpen]="drawerOpen"
+        [menuItems]="appMenu"
+      ></siu-sidenav>
+    </mat-sidenav>
+
+    <mat-sidenav-content [class.mat-sidenav-content-close]="!drawerOpen&&!isMobile">
+      <div class="main-container">
+        <ng-content></ng-content>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
